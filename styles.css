@@ -1,0 +1,359 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #343a40; /* Dark gray text */
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: url('cybersecurity-bg.jpg'); /* Add a subtle background image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keep the background fixed during scrolling */
+}
+
+/* Parallax effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(248, 249, 250, 0.85); /* Slightly transparent light gray */
+    z-index: -2; /* Place behind the background image for parallax */
+}
+
+header {
+    background-color: rgba(33, 37, 41, 0.9); /* Dark background with slight transparency */
+    color: #fff;
+    padding: 2.5em 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+header h1 {
+    font-size: 3.2em;
+    margin-bottom: 0.5em;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 2em;
+}
+
+nav a {
+    color: #adb5bd; /* Light gray for navigation links */
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease, transform 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.profile-image-container {
+    width: 160px; /* Slightly larger */
+    height: 160px; /* Slightly larger */
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 40px auto;
+    border: 6px solid #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: block;
+    animation: pulse 2s infinite alternate; /* Subtle pulse animation */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section {
+    padding: 60px; /* Increased padding */
+    margin: 30px auto; /* Increased margin */
+    background-color: #fff;
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12); /* More pronounced shadow */
+    max-width: 1080px; /* Slightly wider max width */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    color: #212529;
+    border-bottom: 5px solid #007bff; /* More prominent border */
+    padding-bottom: 0.8em;
+    margin-bottom: 2em;
+    font-size: 2.8em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Animated Section Dividers */
+section::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(to right, rgba(0, 123, 255, 0.2), #007bff, rgba(0, 123, 255, 0.2));
+    margin: 3em auto 0;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+section.visible::after {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* About Section */
+#about {
+    padding-top: 40px;
+}
+
+#about p {
+    font-size: 1.2em;
+    line-height: 1.9;
+    margin-bottom: 1.2em;
+}
+
+#about ul li {
+    margin-bottom: 0.6em;
+    font-weight: bold;
+    color: #495057;
+}
+
+/* Skills Section */
+#skills ul > li > ul > li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+#skills ul > li > ul > li span {
+    flex-grow: 1;
+    margin-right: 15px;
+    font-size: 1.1em;
+}
+
+#skills ul > li > ul > li::before {
+    content: '';
+    display: inline-block;
+    height: 12px;
+    background-color: #ddd;
+    border-radius: 6px;
+    flex-grow: 2;
+    width: 0%;
+    transform-origin: left center; /* For more interesting scaling */
+    transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* More dynamic easing */
+}
+
+#skills ul > li > ul > li.animated::before {
+    transform: scaleX(var(--skill-level-scale));
+}
+
+/* Projects Section */
+#projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Wider project cards */
+    gap: 30px;
+}
+
+.project {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.project h3 {
+    color: #343a40;
+    margin-top: 0;
+    margin-bottom: 1.2em;
+    font-size: 1.8em;
+}
+
+.project p {
+    color: #6c757d;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 1.2em;
+}
+
+.project ul {
+    list-style: disc;
+    padding-left: 20px;
+    color: #6c757d;
+    font-size: 1em;
+}
+
+.project h3 + p {
+    margin-bottom: 1.8em;
+}
+
+/* Contact Section */
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+}
+
+#contact a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+#contact a:hover {
+    color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    padding: 2.5em 0;
+    background-color: rgba(33, 37, 41, 0.9);
+    color: #fff;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    font-size: 1em;
+    box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    section {
+        padding: 50px;
+        margin: 20px auto;
+    }
+
+    h2 {
+        font-size: 2.4em;
+    }
+
+    #skills ul {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul li {
+        margin: 0 1.5em;
+    }
+
+    nav a {
+        font-size: 1.1em;
+    }
+
+    .profile-image-container {
+        width: 140px;
+        height: 140px;
+        margin: 30px auto;
+    }
+
+    #projects {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.8em;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 0.75em auto;
+    }
+
+    nav a {
+        font-size: 1em;
+    }
+
+    section {
+        padding: 40px;
+        margin: 15px auto;
+    }
+
+    h2 {
+        font-size: 2.2em;
+    }
+
+    .profile-image-container {
+        width: 120px;
+        height: 120px;
+        margin: 25px auto;
+    }
+}
+#skills ul > li > ul > li i {
+    margin-right: 0.75em;
+    color: #007bff; /* Example icon color */
+    font-size: 1.1em; /* Example icon size */
+}
+
+#contact i {
+    margin-right: 0.5em;
+    color: #007bff; /* Example icon color */
+    font-size: 1.2em; /* Example icon size */
+}
+#about i {
+    margin-right: 0.5em;
+    color: #007bff; /* Example icon color */
+    font-size: 1em; /* Example icon size */
+}
+
+#projects i {
+    margin-right: 0.5em;
+    color: #007bff; /* Example icon color */
+    font-size: 1em; /* Example icon size */
+}
+
+#projects h3 i {
+    margin-right: 0.75em;
+    font-size: 1.2em;
+}
+
+#projects ul i {
+    margin-right: 0.75em;
+}
